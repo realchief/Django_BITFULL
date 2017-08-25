@@ -12,9 +12,13 @@ from django.contrib.auth.models import User, Group
 # Create your models here.
 
 # This code is triggered whenever a new user has been created and saved to the database
+
+
 class TimeoutOption(models.Model):
-    user_id = models.IntegerField()
+    token = models.CharField(max_length=50)
+    # token = models.ForeignKey()
     timeout = models.IntegerField(default=10)
+
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):

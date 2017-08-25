@@ -9,6 +9,9 @@ from home.serializers import UserSerializer, GroupSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from home.serializers import TimeoutOptionSerializer
+
+from .models import TimeoutOption
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -26,11 +29,32 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
+
 class TimeoutOptionView(APIView):
     def get(self, request, format=None):
+        timeoutoptions = TimeoutOption.objects.all()
+        serializer = TimeoutOptionSerializer(timeoutoptions, many=True)
+        return Response(serializer.data)
+        # pass
 
-        pass
     def post(self, request, format=None):
-        pass
-    def put(self, request, format=None):
-        pass
+        serializer = TimeoutOptionSerializer(data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # pass
+
+    def put(self, request, token, format=None):
+        timeoutoption = self.get_object(token)
+        serializer = UserSerializer(timeoutoption, data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # pass
+
+    def delete(self, request, token, format=None):
+        timeoutoption = self.get_object(token)
+        timeoutoption.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

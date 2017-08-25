@@ -14,7 +14,11 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ('url', 'name')
 
+
 class TimeoutOptionSerializer(serializers.Serializer):
     class Meta:
         model = TimeoutOption
-        fields = ('user_id', 'timeout')
+        fields = ('token', 'timeout')
+        token = serializers.CharField(max_length=200)
+        timeout = serializers.IntegerField()
+
