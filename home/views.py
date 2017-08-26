@@ -34,12 +34,16 @@ class TimeoutOptionView(APIView):
 
     def post(self, request, format=None):
         token = Token.objects.get(key=request.auth)
-        filter_values = TimeoutOption.objects.filter(user_id=token.user_id, timeout=request.data['timeout']).all().last()
-        if not filter_values:
-            timeout = TimeoutOption(user_id=token.user_id, timeout=request.data['timeout'])
-            timeout.save()
-            return Response('success', status=status.HTTP_200_OK)
-        return Response('This value already exist', status=status.HTTP_200_OK)
+        curr_user_id = token.user_id
+        curr_timeout = request.data['timeout']
+        last_user_id = TimeoutOption.objects.all().last().user_id
+        last_time_out = TimeoutOption.objects.all().last().timeout
 
+        if curr_user_id == last_user_id and int(curr_timeout) == last_time_out:
+            return Response('This value already exist', status=status.HTTP_200_OK)
+
+        timeout = TimeoutOption(user_id=curr_user_id, timeout=curr_timeout)
+        timeout.save()
+        return Response('success', status=status.HTTP_200_OK)
 
 
