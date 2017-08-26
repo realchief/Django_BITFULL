@@ -40,7 +40,7 @@ class TimeoutOptionView(APIView):
             timeout = TimeoutOption(user_id=token.user_id, timeout=request.data['timeout'])
             timeout.save()
             return Response('success', status=status.HTTP_200_OK)
-        return Response('failed', status=status.HTTP_200_OK)
+        return Response('it has been already set.', status=status.HTTP_200_OK)
 
 
 
