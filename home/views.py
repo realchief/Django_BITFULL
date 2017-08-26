@@ -32,7 +32,6 @@ class GroupViewSet(viewsets.ModelViewSet):
 class TimeoutOptionView(APIView):
     parser_classes = (FormParser,)
 
-
     def post(self, request, format=None):
         token = Token.objects.get(key=request.auth)
         filter_values = TimeoutOption.objects.filter(user_id=token.user_id, timeout=request.data['timeout']).all().last()
@@ -40,7 +39,7 @@ class TimeoutOptionView(APIView):
             timeout = TimeoutOption(user_id=token.user_id, timeout=request.data['timeout'])
             timeout.save()
             return Response('success', status=status.HTTP_200_OK)
-        return Response('it has been already set.', status=status.HTTP_200_OK)
+        return Response('This value already exist', status=status.HTTP_200_OK)
 
 
 
