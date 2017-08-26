@@ -13,5 +13,5 @@ urlpatterns = [
     # url(r'^$', views.index, name='index'),
     url(r'^', include(router.urls)),
     url(r'^api-token-auth/', auth_views.obtain_auth_token),
-    url(r'^timeout_options/', views.TimeoutOptionView),
+    url(r'^timeout_options/', views.TimeoutOptionView.as_view()),
 ]

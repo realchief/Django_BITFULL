@@ -9,10 +9,10 @@ from home.serializers import UserSerializer, GroupSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from home.serializers import TimeoutOptionSerializer
-
+from home.serializers import UserSerializer
 from .models import TimeoutOption
-
+from rest_framework.parsers import FormParser
+from rest_framework.authtoken.models import Token
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -29,32 +29,18 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-
 class TimeoutOptionView(APIView):
-    def get(self, request, format=None):
-        timeoutoptions = TimeoutOption.objects.all()
-        serializer = TimeoutOptionSerializer(timeoutoptions, many=True)
-        return Response(serializer.data)
-        # pass
+    parser_classes = (FormParser,)
+
 
     def post(self, request, format=None):
-        serializer = TimeoutOptionSerializer(data=request.DATA)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        # pass
+        token = Token.objects.get(key=request.auth)
+        filter_values = TimeoutOption.objects.filter(user_id=token.user_id, timeout=request.data['timeout']).all().last()
+        if not filter_values:
+            timeout = TimeoutOption(user_id=token.user_id, timeout=request.data['timeout'])
+            timeout.save()
+            return Response('success', status=status.HTTP_200_OK)
+        return Response('failed', status=status.HTTP_200_OK)
 
-    def put(self, request, token, format=None):
-        timeoutoption = self.get_object(token)
-        serializer = UserSerializer(timeoutoption, data=request.DATA)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        # pass
 
-    def delete(self, request, token, format=None):
-        timeoutoption = self.get_object(token)
-        timeoutoption.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+

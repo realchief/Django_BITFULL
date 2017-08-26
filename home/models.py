@@ -15,9 +15,8 @@ from django.contrib.auth.models import User, Group
 
 
 class TimeoutOption(models.Model):
-    token = models.CharField(max_length=50)
-    # token = models.ForeignKey()
-    timeout = models.IntegerField(default=10)
+    user_id = models.IntegerField(blank=False)
+    timeout = models.IntegerField(blank=False)
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
