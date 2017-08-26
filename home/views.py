@@ -14,6 +14,7 @@ from .models import TimeoutOption
 from rest_framework.parsers import FormParser
 from rest_framework.authtoken.models import Token
 
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
@@ -21,13 +22,13 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
-
 class GroupViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
 
 class TimeoutOptionView(APIView):
     parser_classes = (FormParser,)
@@ -39,11 +40,17 @@ class TimeoutOptionView(APIView):
         last_user_id = TimeoutOption.objects.all().last().user_id
         last_time_out = TimeoutOption.objects.all().last().timeout
 
+        if not curr_timeout:
+            return Response('Please set time option', status=status.HTTP_404_NOT_FOUND)
+
+        if not last_time_out:
+            timeout = TimeoutOption(user_id=curr_user_id, timeout=curr_timeout)
+            timeout.save()
+            return Response('success', status=status.HTTP_200_OK)
+
         if curr_user_id == last_user_id and int(curr_timeout) == last_time_out:
             return Response('This value already exist', status=status.HTTP_200_OK)
 
         timeout = TimeoutOption(user_id=curr_user_id, timeout=curr_timeout)
         timeout.save()
         return Response('success', status=status.HTTP_200_OK)
-
-
