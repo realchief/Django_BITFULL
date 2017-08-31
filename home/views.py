@@ -14,6 +14,20 @@ from .models import TimeoutOption
 from rest_framework.parsers import FormParser
 from rest_framework.authtoken.models import Token
 
+import pymongo
+from pymongo import MongoClient
+
+
+MONGO_HOST = "10.8.0.2"
+MONGO_DB = "cc_accounts"
+MONGO_USER = "Readuser"
+MONGO_PASS = "jbh4S3pCpTGCdIGGVOU6"
+
+mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
+conection = MongoClient(host=mongoserver_uri)
+db = conection['cc_accounts']
+collection = db['LANDON_coinigy_account']
+a = collection.find_one()
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -79,6 +93,8 @@ class TimeoutOptionView(APIView):
         #
         # if curr_user_id == last_user_id and int(curr_timeout) == last_time_out:
         #     return Response('This value already exist', status=status.HTTP_200_OK)
+
+
 
 
 
