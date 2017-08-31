@@ -17,17 +17,16 @@ from rest_framework.authtoken.models import Token
 import pymongo
 from pymongo import MongoClient
 
-
-MONGO_HOST = "10.8.0.2"
-MONGO_DB = "cc_accounts"
-MONGO_USER = "Readuser"
-MONGO_PASS = "jbh4S3pCpTGCdIGGVOU6"
-
 mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
-conection = MongoClient(host=mongoserver_uri)
-db = conection['cc_accounts']
+connection = MongoClient(host=mongoserver_uri)
+db = connection['cc_accounts']
 collection = db['LANDON_coinigy_account']
-a = collection.find_one()
+# values = collection.find_one()
+cursor = collection.find({})
+for document in cursor:
+    print(document.keys())
+
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -64,6 +63,24 @@ class TimeoutOptionView(APIView):
         timeout.save()
         return Response('success', status=status.HTTP_200_OK)
 
+
+# class RetrieveDataView(APIView):
+#
+#     def getdata(self, request, format=None):
+#
+#         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
+#         connection = MongoClient(host=mongoserver_uri)
+#         db = connection['cc_accounts']
+#         # collection_names = db.collection_names()
+#         # # collection_numbers = len(collection_names)
+#         # for collection_name in collection_names:
+#         #     collection = db[collection_name]
+#         #     values = collection.find_one()
+#         #     return values
+#
+#         collection = db['LANDON_coinigy_account']
+#         values = collection.find_one()
+#         return values
 
 
 
