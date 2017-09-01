@@ -67,33 +67,24 @@ class TimeoutOptionView(APIView):
 
 class RetrieveDataView(APIView):
     def get(self, request, format=None):
-
+        json_data = []
+        newdata = {}
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         data = list(collection.find({}).sort('_id', pymongo.DESCENDING).limit(50))
-        # json_data = json.dumps(data)
-        json.dumps({'data': data})
-        return Response(data, status=status.HTTP_200_OK)
+        for datum in data:
+            json_data.append({'id': str(datum['_id']),
+                              'balance_curr_code': datum['balance_curr_code'],
+                              'balance_amount_avail': datum['balance_amount_avail'],
+                              'balance_amount_held': datum['balance_amount_held'],
+                              'balance_amount_total': datum['balance_amount_total'],
+                              'btc_balance': datum['btc_balance'],
+                              'last_price': datum['last_price'],
+                              'time': datum['time']})
+        return Response(json_data, status=status.HTTP_200_OK)
 
-# class RetrieveDataView(APIView):
-#
-#     def getdata(self, request, format=None):
-#
-#         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
-#         connection = MongoClient(host=mongoserver_uri)
-#         db = connection['cc_accounts']
-#         # collection_names = db.collection_names()
-#         # # collection_numbers = len(collection_names)
-#         # for collection_name in collection_names:
-#         #     collection = db[collection_name]
-#         #     values = collection.find_one()
-#         #     return values
-#
-#         collection = db['LANDON_coinigy_account']
-#         values = collection.find_one()
-#         return values
 
 
 
