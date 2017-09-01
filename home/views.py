@@ -73,7 +73,7 @@ class RetrieveDataView(APIView):
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
-        data = list(collection.find({}).sort('_id', pymongo.DESCENDING).limit(50))
+        data = list(collection.find({}).sort('_id', pymongo.DESCENDING).limit(540))
         for datum in data:
             json_data.append({'id': str(datum['_id']),
                               'balance_curr_code': datum['balance_curr_code'],
