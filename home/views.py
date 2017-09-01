@@ -13,18 +13,19 @@ from home.serializers import UserSerializer
 from .models import TimeoutOption
 from rest_framework.parsers import FormParser
 from rest_framework.authtoken.models import Token
+import json
 
 import pymongo
 from pymongo import MongoClient
 
-mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
-connection = MongoClient(host=mongoserver_uri)
-db = connection['cc_accounts']
-collection = db['LANDON_coinigy_account']
-# values = collection.find_one()
-cursor = collection.find({})
-for document in cursor:
-    print(document.keys())
+# mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
+# connection = MongoClient(host=mongoserver_uri)
+# db = connection['cc_accounts']
+# collection = db['LANDON_coinigy_account']
+# cursor = collection.find({})
+# for document in cursor:
+#     context = {'context': document}
+
 
 
 
@@ -63,6 +64,25 @@ class TimeoutOptionView(APIView):
         timeout.save()
         return Response('success', status=status.HTTP_200_OK)
 
+
+class RetrieveDataView(APIView):
+    def get(self, request, format=None):
+
+        mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
+        connection = MongoClient(host=mongoserver_uri)
+        db = connection['cc_accounts']
+        collection = db['LANDON_coinigy_account']
+        cursor = collection.find({})
+        data = list(cursor)
+        # data = list(collection.find({}))[-30:]
+
+        # data = {}
+        # for idx, document in enumerate(cursor):
+        #
+        # data[idx] = document
+        # data['key'] = 'value'
+        # json_data = json.dumps(data)
+        return Response(data, status=status.HTTP_200_OK)
 
 # class RetrieveDataView(APIView):
 #
