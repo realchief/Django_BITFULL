@@ -72,16 +72,9 @@ class RetrieveDataView(APIView):
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
-        cursor = collection.find({})
-        data = list(cursor)
-        # data = list(collection.find({}))[-30:]
-
-        # data = {}
-        # for idx, document in enumerate(cursor):
-        #
-        # data[idx] = document
-        # data['key'] = 'value'
+        data = list(collection.find({}).sort('_id', pymongo.DESCENDING).limit(50))
         # json_data = json.dumps(data)
+        json.dumps({'data': data})
         return Response(data, status=status.HTTP_200_OK)
 
 # class RetrieveDataView(APIView):
