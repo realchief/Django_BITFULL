@@ -65,7 +65,7 @@ class RetrieveDataViewFifteenMin(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(0, 30):
+        for index in range(1, 31):
             diff_time = 15 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=0)
@@ -80,9 +80,9 @@ class RetrieveDataViewFifteenMin(APIView):
             data_eachtime = list(cursor_data_eachtime)
             data.append(data_eachtime)
 
-        for datum in data:
-            for datum in datum:
-                json_data.append({'id': str(datum['_id']),
+        for idx, datums in enumerate(data):
+            for datum in datums:
+                json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
                                   'balance_amount_held': datum['balance_amount_held'],
@@ -102,7 +102,7 @@ class RetrieveDataViewFiveMin(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(0, 30):
+        for index in range(1, 31):
             diff_time = 5 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=0)
@@ -117,9 +117,9 @@ class RetrieveDataViewFiveMin(APIView):
             data_eachtime = list(cursor_data_eachtime)
             data.append(data_eachtime)
 
-        for datum in data:
-            for datum in datum:
-                json_data.append({'id': str(datum['_id']),
+        for idx, datums in enumerate(data):
+            for datum in datums:
+                json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
                                   'balance_amount_held': datum['balance_amount_held'],
@@ -139,7 +139,7 @@ class RetrieveDataViewOneHour(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(0, 30):
+        for index in range(1, 31):
             diff_time = 60 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=0)
@@ -154,9 +154,9 @@ class RetrieveDataViewOneHour(APIView):
             data_eachtime = list(cursor_data_eachtime)
             data.append(data_eachtime)
 
-        for datum in data:
-            for datum in datum:
-                json_data.append({'id': str(datum['_id']),
+        for idx, datums in enumerate(data):
+            for datum in datums:
+                json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
                                   'balance_amount_held': datum['balance_amount_held'],
@@ -176,7 +176,7 @@ class RetrieveDataViewFourHours(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(0, 30):
+        for index in range(1, 31):
             diff_time = 240 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=0)
@@ -191,9 +191,9 @@ class RetrieveDataViewFourHours(APIView):
             data_eachtime = list(cursor_data_eachtime)
             data.append(data_eachtime)
 
-        for datum in data:
-            for datum in datum:
-                json_data.append({'id': str(datum['_id']),
+        for idx, datums in enumerate(data):
+            for datum in datums:
+                json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
                                   'balance_amount_held': datum['balance_amount_held'],
@@ -213,7 +213,7 @@ class RetrieveDataViewOneDay(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(0, 30):
+        for index in range(1, 31):
             diff_time = index
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=0)
@@ -228,9 +228,9 @@ class RetrieveDataViewOneDay(APIView):
             data_eachtime = list(cursor_data_eachtime)
             data.append(data_eachtime)
 
-        for datum in data:
-            for datum in datum:
-                json_data.append({'id': str(datum['_id']),
+        for idx, datums in enumerate(data):
+            for datum in datums:
+                json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
                                   'balance_amount_held': datum['balance_amount_held'],
@@ -250,7 +250,7 @@ class RetrieveDataViewOneWeek(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(0, 30):
+        for index in range(1, 31):
             diff_time = 7 * index
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=0)
@@ -265,9 +265,9 @@ class RetrieveDataViewOneWeek(APIView):
             data_eachtime = list(cursor_data_eachtime)
             data.append(data_eachtime)
 
-        for datum in data:
-            for datum in datum:
-                json_data.append({'id': str(datum['_id']),
+        for idx, datums in enumerate(data):
+            for datum in datums:
+                json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
                                   'balance_amount_held': datum['balance_amount_held'],
