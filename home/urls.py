@@ -18,5 +18,7 @@ urlpatterns = [
     # url(r'^api/retrieve_data/', views.RetrieveDataView.as_view()),
     url(r'^api/retrieve_data/five_min', views.RetrieveDataViewFiveMin.as_view()),
     url(r'^api/retrieve_data/fifteen_min', views.RetrieveDataViewFifteenMin.as_view()),
-    # url(r'^api/retrieve_latest_data/', views.RetrieveLatestDataView.as_view()),
+    url(r'^api/retrieve_data/one_hour', views.RetrieveDataViewOneHour.as_view()),
+    url(r'^api/retrieve_data/four_hours', views.RetrieveDataViewFourHours.as_view()),
+    url(r'^api/retrieve_latest_data/', views.RetrieveLatestDataView.as_view()),
 ]
