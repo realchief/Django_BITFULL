@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^api/retrieve_data/one_hour', views.RetrieveDataViewOneHour.as_view()),
     url(r'^api/retrieve_data/four_hours', views.RetrieveDataViewFourHours.as_view()),
     url(r'^api/retrieve_data/one_day', views.RetrieveDataViewOneDay.as_view()),
-    url(r'^api/retrieve_data/one_week', views.RetrieveDataViewOneweek.as_view()),
+    url(r'^api/retrieve_data/one_week', views.RetrieveDataViewOneWeek.as_view()),
     url(r'^api/retrieve_latest_data/', views.RetrieveLatestDataView.as_view()),
 ]

@@ -251,8 +251,8 @@ class RetrieveDataViewOneWeek(APIView):
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
-            diff_time = index
-            curr_date_time = latest_datatime - datetime.timedelta(weeks=diff_time)
+            diff_time = 7 * index
+            curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=0)
             start_time = curr_date_time - datetime.timedelta(minutes=5)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
