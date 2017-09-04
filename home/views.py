@@ -106,6 +106,10 @@ class RetrieveDataViewFiveMin(APIView):
     def get(self, request, format=None):
         data = []
         json_data = []
+
+        client = gdax.PublicClient()
+        ticker = client.get_product_ticker('BTC-USD')
+
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
@@ -128,11 +132,13 @@ class RetrieveDataViewFiveMin(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
+                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
-                                  'balance_amount_held': datum['balance_amount_held'],
+                                  # 'balance_amount_held': datum['balance_amount_held'],
                                   'balance_amount_total': datum['balance_amount_total'],
+                                  'usd_balance': datum['usd_balance'],
                                   'btc_balance': datum['btc_balance'],
                                   'last_price': datum['last_price'],
                                   'time': datum['time']})
@@ -143,6 +149,10 @@ class RetrieveDataViewOneHour(APIView):
     def get(self, request, format=None):
         data = []
         json_data = []
+
+        client = gdax.PublicClient()
+        ticker = client.get_product_ticker('BTC-USD')
+
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
@@ -165,11 +175,13 @@ class RetrieveDataViewOneHour(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
+                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
-                                  'balance_amount_held': datum['balance_amount_held'],
+                                  # 'balance_amount_held': datum['balance_amount_held'],
                                   'balance_amount_total': datum['balance_amount_total'],
+                                  'usd_balance': datum['usd_balance'],
                                   'btc_balance': datum['btc_balance'],
                                   'last_price': datum['last_price'],
                                   'time': datum['time']})
@@ -180,6 +192,10 @@ class RetrieveDataViewFourHours(APIView):
     def get(self, request, format=None):
         data = []
         json_data = []
+
+        client = gdax.PublicClient()
+        ticker = client.get_product_ticker('BTC-USD')
+
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
@@ -202,11 +218,13 @@ class RetrieveDataViewFourHours(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
+                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
-                                  'balance_amount_held': datum['balance_amount_held'],
+                                  # 'balance_amount_held': datum['balance_amount_held'],
                                   'balance_amount_total': datum['balance_amount_total'],
+                                  'usd_balance': datum['usd_balance'],
                                   'btc_balance': datum['btc_balance'],
                                   'last_price': datum['last_price'],
                                   'time': datum['time']})
@@ -217,6 +235,10 @@ class RetrieveDataViewOneDay(APIView):
     def get(self, request, format=None):
         data = []
         json_data = []
+
+        client = gdax.PublicClient()
+        ticker = client.get_product_ticker('BTC-USD')
+
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
@@ -239,11 +261,13 @@ class RetrieveDataViewOneDay(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
+                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
-                                  'balance_amount_held': datum['balance_amount_held'],
+                                  # 'balance_amount_held': datum['balance_amount_held'],
                                   'balance_amount_total': datum['balance_amount_total'],
+                                  'usd_balance': datum['usd_balance'],
                                   'btc_balance': datum['btc_balance'],
                                   'last_price': datum['last_price'],
                                   'time': datum['time']})
@@ -254,6 +278,10 @@ class RetrieveDataViewOneWeek(APIView):
     def get(self, request, format=None):
         data = []
         json_data = []
+
+        client = gdax.PublicClient()
+        ticker = client.get_product_ticker('BTC-USD')
+
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
@@ -276,11 +304,13 @@ class RetrieveDataViewOneWeek(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
+                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
-                                  'balance_amount_held': datum['balance_amount_held'],
+                                  # 'balance_amount_held': datum['balance_amount_held'],
                                   'balance_amount_total': datum['balance_amount_total'],
+                                  'usd_balance': datum['usd_balance'],
                                   'btc_balance': datum['btc_balance'],
                                   'last_price': datum['last_price'],
                                   'time': datum['time']})
@@ -290,17 +320,23 @@ class RetrieveDataViewOneWeek(APIView):
 class RetrieveLatestDataView(APIView):
     def get(self, request, format=None):
         json_data = []
+
+        client = gdax.PublicClient()
+        ticker = client.get_product_ticker('BTC-USD')
+
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         data = list(collection.find({}).sort('_id', pymongo.DESCENDING).limit(25))
         for datum in data:
+            datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
             json_data.append({'id': str(datum['_id']),
                               'balance_curr_code': datum['balance_curr_code'],
                               'balance_amount_avail': datum['balance_amount_avail'],
-                              'balance_amount_held': datum['balance_amount_held'],
+                              # 'balance_amount_held': datum['balance_amount_held'],
                               'balance_amount_total': datum['balance_amount_total'],
+                              'usd_balance': datum['usd_balance'],
                               'btc_balance': datum['btc_balance'],
                               'last_price': datum['last_price'],
                               'time': datum['time']})
