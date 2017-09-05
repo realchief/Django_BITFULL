@@ -37,24 +37,24 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
-class TimeoutOptionView(APIView):
-    parser_classes = (FormParser,)
-
-    def post(self, request, format=None):
-        token = Token.objects.get(key=request.auth)
-        curr_user_id = token.user_id
-        curr_timeout = request.data['timeout']
-        if TimeoutOption.objects.all():
-            if TimeoutOption.objects.get(user_id=token.user_id):
-                timeout = TimeoutOption.objects.get(user_id=token.user_id)
-                timeout.timeout = curr_timeout
-            else:
-                timeout = TimeoutOption(user_id=curr_user_id, timeout=curr_timeout)
-        else:
-            timeout = TimeoutOption(user_id=curr_user_id, timeout=curr_timeout)
-
-        timeout.save()
-        return Response('success', status=status.HTTP_200_OK)
+# class TimeoutOptionView(APIView):
+#     parser_classes = (FormParser,)
+#
+#     def post(self, request, format=None):
+#         token = Token.objects.get(key=request.auth)
+#         curr_user_id = token.user_id
+#         curr_timeout = request.data['timeout']
+#         if TimeoutOption.objects.all():
+#             if TimeoutOption.objects.get(user_id=token.user_id):
+#                 timeout = TimeoutOption.objects.get(user_id=token.user_id)
+#                 timeout.timeout = curr_timeout
+#             else:
+#                 timeout = TimeoutOption(user_id=curr_user_id, timeout=curr_timeout)
+#         else:
+#             timeout = TimeoutOption(user_id=curr_user_id, timeout=curr_timeout)
+#
+#         timeout.save()
+#         return Response('success', status=status.HTTP_200_OK)
 
 
 class RetrieveDataViewFifteenMin(APIView):
