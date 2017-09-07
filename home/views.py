@@ -71,11 +71,11 @@ class RetrieveDataViewFifteenMin(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(1, 31):
+        for index in range(0, 30):
             diff_time = 15 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=0)
-            start_time = curr_date_time - datetime.timedelta(minutes=5)
+            end_time = curr_date_time - datetime.timedelta(minutes=5)
+            start_time = curr_date_time - datetime.timedelta(minutes=10)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -115,11 +115,11 @@ class RetrieveDataViewFiveMin(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(1, 31):
+        for index in range(0, 30):
             diff_time = 5 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=0)
-            start_time = curr_date_time - datetime.timedelta(minutes=5)
+            end_time = curr_date_time - datetime.timedelta(minutes=5)
+            start_time = curr_date_time - datetime.timedelta(minutes=10)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -158,11 +158,11 @@ class RetrieveDataViewOneHour(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(1, 31):
+        for index in range(0, 30):
             diff_time = 60 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=0)
-            start_time = curr_date_time - datetime.timedelta(minutes=5)
+            end_time = curr_date_time - datetime.timedelta(minutes=5)
+            start_time = curr_date_time - datetime.timedelta(minutes=10)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -201,11 +201,11 @@ class RetrieveDataViewFourHours(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(1, 31):
+        for index in range(0, 30):
             diff_time = 240 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=0)
-            start_time = curr_date_time - datetime.timedelta(minutes=5)
+            end_time = curr_date_time - datetime.timedelta(minutes=5)
+            start_time = curr_date_time - datetime.timedelta(minutes=10)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -244,11 +244,11 @@ class RetrieveDataViewOneDay(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(1, 31):
+        for index in range(0, 30):
             diff_time = index
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=0)
-            start_time = curr_date_time - datetime.timedelta(minutes=5)
+            end_time = curr_date_time - datetime.timedelta(minutes=5)
+            start_time = curr_date_time - datetime.timedelta(minutes=10)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -287,11 +287,11 @@ class RetrieveDataViewOneWeek(APIView):
         db = connection['cc_accounts']
         collection = db['LANDON_coinigy_account']
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
-        for index in range(1, 31):
+        for index in range(0, 30):
             diff_time = 7 * index
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=0)
-            start_time = curr_date_time - datetime.timedelta(minutes=5)
+            end_time = curr_date_time - datetime.timedelta(minutes=5)
+            start_time = curr_date_time - datetime.timedelta(minutes=10)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
