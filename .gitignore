@@ -51,6 +51,8 @@ fabric.properties
 # python cache
 __pycache__/
 *.py[cod]
+*.pyc
+*.pot
 
 # static
 static/*
