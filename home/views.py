@@ -69,7 +69,19 @@ class RetrieveDataViewFifteenMin(APIView):
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
-        collection = db['LANDON_coinigy_account']
+
+        current_user = request.user
+        current_username = current_user.username
+
+        if current_username == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin':
+            collection = db['LANDON_coinigy_account']
+
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
             diff_time = 15 * index
@@ -113,7 +125,19 @@ class RetrieveDataViewFiveMin(APIView):
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
-        collection = db['LANDON_coinigy_account']
+
+        current_user = request.user
+        current_username = current_user.username
+
+        if current_username == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin':
+            collection = db['LANDON_coinigy_account']
+
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
             diff_time = 5 * index
@@ -156,7 +180,19 @@ class RetrieveDataViewOneHour(APIView):
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
-        collection = db['LANDON_coinigy_account']
+
+        current_user = request.user
+        current_username = current_user.username
+
+        if current_username == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin':
+            collection = db['LANDON_coinigy_account']
+
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
             diff_time = 60 * index
@@ -199,7 +235,19 @@ class RetrieveDataViewFourHours(APIView):
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
-        collection = db['LANDON_coinigy_account']
+
+        current_user = request.user
+        current_username = current_user.username
+
+        if current_username == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin':
+            collection = db['LANDON_coinigy_account']
+
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
             diff_time = 240 * index
@@ -242,7 +290,19 @@ class RetrieveDataViewOneDay(APIView):
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
-        collection = db['LANDON_coinigy_account']
+
+        current_user = request.user
+        current_username = current_user.username
+
+        if current_username == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin':
+            collection = db['LANDON_coinigy_account']
+
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
             diff_time = index
@@ -285,7 +345,19 @@ class RetrieveDataViewOneWeek(APIView):
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
-        collection = db['LANDON_coinigy_account']
+
+        current_user = request.user
+        current_username = current_user.username
+
+        if current_username == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin':
+            collection = db['LANDON_coinigy_account']
+
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
             diff_time = 7 * index
