@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from home.serializers import UserSerializer
 from .models import TimeoutOption
+from .models import AccountNameOption
 from rest_framework.parsers import FormParser
 from rest_framework.authtoken.models import Token
 import datetime
@@ -54,6 +55,26 @@ class TimeoutOptionView(APIView):
             timeout = TimeoutOption(user_id=curr_user_id, timeout=curr_timeout)
 
         timeout.save()
+        return Response('success', status=status.HTTP_200_OK)
+
+
+class AccountNameOptionView(APIView):
+    parser_classes = (FormParser,)
+
+    def post(self, request, format=None):
+        token = Token.objects.get(key=request.auth)
+        curr_user_id = token.user_id
+        curr_account_name = request.data['account_name']
+        if AccountNameOption.objects.all():
+            if AccountNameOption.objects.get(user_id=token.user_id):
+                account_name = AccountNameOption.objects.get(user_id=token.user_id)
+                account_name.account_name = curr_account_name
+            else:
+                account_name = AccountNameOption(user_id=curr_user_id, account_name=curr_account_name)
+        else:
+            account_name = AccountNameOption(user_id=curr_user_id, account_name=curr_account_name)
+
+        account_name.save()
         return Response('success', status=status.HTTP_200_OK)
 
 

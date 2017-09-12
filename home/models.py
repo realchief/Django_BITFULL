@@ -19,6 +19,11 @@ class TimeoutOption(models.Model):
     timeout = models.IntegerField(blank=False)
 
 
+class AccountNameOption(models.Model):
+    user_id = models.IntegerField(blank=False)
+    account_name = models.CharField(blank=False, max_length=100)
+
+
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
