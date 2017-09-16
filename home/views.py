@@ -94,8 +94,6 @@ class RetrieveDataViewFifteenMin(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        # if current_username == 'admin':
-        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
@@ -158,8 +156,6 @@ class RetrieveDataViewFiveMin(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        # if current_username == 'admin':
-        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
@@ -221,8 +217,6 @@ class RetrieveDataViewOneHour(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        # if current_username == 'admin':
-        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
@@ -284,8 +278,6 @@ class RetrieveDataViewFourHours(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        # if current_username == 'admin':
-        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
@@ -347,8 +339,6 @@ class RetrieveDataViewOneDay(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        # if current_username == 'admin':
-        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
@@ -410,8 +400,6 @@ class RetrieveDataViewOneWeek(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        # if current_username == 'admin':
-        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
