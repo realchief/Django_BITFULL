@@ -94,22 +94,22 @@ class RetrieveDataViewFifteenMin(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        if current_username == 'admin':
-            collection = db['LANDON_coinigy_account']
+        # if current_username == 'admin':
+        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -158,22 +158,22 @@ class RetrieveDataViewFiveMin(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        if current_username == 'admin':
-            collection = db['LANDON_coinigy_account']
+        # if current_username == 'admin':
+        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -221,22 +221,22 @@ class RetrieveDataViewOneHour(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        if current_username == 'admin':
-            collection = db['LANDON_coinigy_account']
+        # if current_username == 'admin':
+        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -284,22 +284,22 @@ class RetrieveDataViewFourHours(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        if current_username == 'admin':
-            collection = db['LANDON_coinigy_account']
+        # if current_username == 'admin':
+        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -347,22 +347,22 @@ class RetrieveDataViewOneDay(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        if current_username == 'admin':
-            collection = db['LANDON_coinigy_account']
+        # if current_username == 'admin':
+        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -410,22 +410,22 @@ class RetrieveDataViewOneWeek(APIView):
         current_user = request.user
         current_username = current_user.username
 
-        if current_username == 'admin':
-            collection = db['LANDON_coinigy_account']
+        # if current_username == 'admin':
+        #     collection = db['LANDON_coinigy_account']
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
         if current_username == 'CHRISTIAN':
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
