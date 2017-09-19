@@ -97,12 +97,12 @@ class AccountNameDisplayView(APIView):
         return Response(account_names, status=status.HTTP_200_OK)
 
 
-
 class RetrieveDataViewFifteenMin(APIView):
 
     def get(self, request, format=None):
         data = []
         json_data = []
+        origin_json_data = []
 
         client = gdax.PublicClient()
         ticker = client.get_product_ticker('BTC-USD')
@@ -148,7 +148,7 @@ class RetrieveDataViewFifteenMin(APIView):
         for idx, datums in enumerate(data):
             for datum in datums:
                 datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
-                json_data.append({'id': idx,
+                origin_json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
                                   # 'balance_amount_held': datum['balance_amount_held'],
@@ -157,6 +157,18 @@ class RetrieveDataViewFifteenMin(APIView):
                                   'btc_balance': datum['btc_balance'],
                                   'last_price': datum['last_price'],
                                   'time': datum['time']})
+
+        for idx, datums in enumerate(origin_json_data):
+            # datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+            json_data.append({'id': idx,
+                              'balance_curr_code': datum['balance_curr_code'],
+                              'balance_amount_avail': datum['balance_amount_avail'],
+                              # 'balance_amount_held': datum['balance_amount_held'],
+                              'balance_amount_total': datum['balance_amount_total'],
+                              'usd_balance': datum['usd_balance'],
+                              'btc_balance': datum['btc_balance'],
+                              'last_price': datum['last_price'],
+                              'time': datum['time']})
 
         return Response(json_data, status=status.HTTP_200_OK)
 
