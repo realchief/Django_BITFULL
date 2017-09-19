@@ -80,13 +80,21 @@ class AccountNameOptionView(APIView):
 
 class AccountNameDisplayView(APIView):
     def get(self, request, format=None):
-        data = []
-        json_data = []
-        mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
-        connection = MongoClient(host=mongoserver_uri)
-        db = connection['cc_accounts']
+        account_names = []
 
-        return Response(json_data, status=status.HTTP_200_OK)
+        current_user = request.user
+        current_username = current_user.username
+
+        if current_username == 'admin':
+            mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
+            connection = MongoClient(host=mongoserver_uri)
+            db = connection['cc_accounts']
+            cols = db.collection_names()
+            for col in cols:
+                account_names.append(col.split('_')[0])
+        else:
+            account_names = current_username
+        return Response(account_names, status=status.HTTP_200_OK)
 
 
 
