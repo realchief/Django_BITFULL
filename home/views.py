@@ -78,6 +78,18 @@ class AccountNameOptionView(APIView):
         return Response('success', status=status.HTTP_200_OK)
 
 
+class AccountNameDisplayView(APIView):
+    def get(self, request, format=None):
+        data = []
+        json_data = []
+        mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
+        connection = MongoClient(host=mongoserver_uri)
+        db = connection['cc_accounts']
+
+        return Response(json_data, status=status.HTTP_200_OK)
+
+
+
 class RetrieveDataViewFifteenMin(APIView):
 
     def get(self, request, format=None):
