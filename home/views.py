@@ -508,6 +508,69 @@ class RetrieveDataViewOneWeek(APIView):
         return Response(json_data, status=status.HTTP_200_OK)
 
 
+class RetrieveDataViewOneMonth(APIView):
+    def get(self, request, format=None):
+        data = []
+        json_data = []
+
+        client = gdax.PublicClient()
+        ticker = client.get_product_ticker('BTC-USD')
+
+        mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
+        connection = MongoClient(host=mongoserver_uri)
+        db = connection['cc_accounts']
+
+        current_user = request.user
+        current_username = current_user.username
+        # current_username = request.path.split('/')[-1]
+
+        if current_username == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
+            collection = db['LANDON_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
+            collection = db['CHRISTIAN_coinigy_account']
+        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
+            collection = db['VIVEK_coinigy_account']
+
+        latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
+        for index in range(0, 30):
+            diff_time = 30 * index
+            curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
+            end_time = curr_date_time - datetime.timedelta(minutes=5)
+            start_time = curr_date_time - datetime.timedelta(minutes=10)
+            # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
+            cursor_data_eachtime = collection.find({
+                'time': {
+                    '$gte': start_time,
+                    '$lt': end_time
+                }
+            })
+            data_eachtime = list(cursor_data_eachtime)
+            data.append(data_eachtime)
+
+        for idx, datums in enumerate(data):
+            for datum in datums:
+                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+                json_data.append({'id': idx,
+                                  'balance_curr_code': datum['balance_curr_code'],
+                                  'balance_amount_avail': datum['balance_amount_avail'],
+                                  # 'balance_amount_held': datum['balance_amount_held'],
+                                  'balance_amount_total': datum['balance_amount_total'],
+                                  'usd_balance': datum['usd_balance'],
+                                  'btc_balance': datum['btc_balance'],
+                                  'last_price': datum['last_price'],
+                                  'time': datum['time']})
+        return Response(json_data, status=status.HTTP_200_OK)
+
+
+
 class RetrieveLatestDataView(APIView):
     def get(self, request, format=None):
         json_data = []
