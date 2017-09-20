@@ -113,7 +113,7 @@ class RetrieveDataViewFifteenMin(APIView):
 
         # current_user = request.user
         # current_username = current_user.username
-        current_username = request_path.split('/')[-1]
+        current_username = request.path.split('/')[-1]
 
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
@@ -121,14 +121,14 @@ class RetrieveDataViewFifteenMin(APIView):
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-            collection = db['LANDON_coinigy_account']
-        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-            collection = db['LANDON_coinigy_account']
-        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-            collection = db['CHRISTIAN_coinigy_account']
-        if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-            collection = db['VIVEK_coinigy_account']
+        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
+        #     collection = db['LANDON_coinigy_account']
+        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
+        #     collection = db['LANDON_coinigy_account']
+        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
+        #     collection = db['CHRISTIAN_coinigy_account']
+        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
+        #     collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -136,7 +136,7 @@ class RetrieveDataViewFifteenMin(APIView):
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=5)
             start_time = curr_date_time - datetime.timedelta(minutes=10)
-            # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
+
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
