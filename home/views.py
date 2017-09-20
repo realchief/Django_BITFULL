@@ -111,8 +111,9 @@ class RetrieveDataViewFifteenMin(APIView):
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
 
-        current_user = request.user
-        current_username = current_user.username
+        # current_user = request.user
+        # current_username = current_user.username
+        current_username = request_path.split('/')[-1]
 
         if current_username == 'LANDON':
             collection = db['LANDON_coinigy_account']
@@ -149,6 +150,7 @@ class RetrieveDataViewFifteenMin(APIView):
             for datum in datums:
                 datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
                 json_data.append({'id': idx,
+                                  'balance_curr_code': datum['balance_curr_code'],
                                   'balance_amount_avail': datum['balance_amount_avail'],
                                   # 'balance_amount_held': datum['balance_amount_held'],
                                   'balance_amount_total': datum['balance_amount_total'],
