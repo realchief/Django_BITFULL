@@ -93,7 +93,8 @@ class AccountNameDisplayView(APIView):
             for col in cols:
                 account_names.append(col.split('_')[0])
         else:
-            account_names = current_username
+            # account_names = current_username
+            account_names.append(current_username)
         return Response(account_names, status=status.HTTP_200_OK)
 
 

@@ -57,3 +57,5 @@ __pycache__/
 # static
 static/*
 home/static/*
+
+db.sqlite3
