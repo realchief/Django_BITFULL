@@ -150,16 +150,25 @@ class RetrieveDataViewFifteenMin(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
-                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+                datum['usd_balance'] = str(int(float(datum['btc_balance']) * float(ticker['bid'])))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
-                                  'balance_amount_avail': datum['balance_amount_avail'],
+                                  'balance_amount_avail': str(int(float(datum['balance_amount_avail']))),
                                   # 'balance_amount_held': datum['balance_amount_held'],
-                                  'balance_amount_total': datum['balance_amount_total'],
+                                  'balance_amount_total': str(int(float(datum['balance_amount_total']))),
                                   'usd_balance': datum['usd_balance'],
-                                  'btc_balance': datum['btc_balance'],
-                                  'last_price': datum['last_price'],
+                                  'btc_balance': str(int(float(datum['btc_balance']))),
+                                  'last_price': str(int(float(datum['last_price']))),
                                   'time': datum['time']})
+                # json_data.append({'id': idx,
+                #                   'balance_curr_code': datum['balance_curr_code'],
+                #                   'balance_amount_avail': datum['balance_amount_avail'],
+                #                   # 'balance_amount_held': datum['balance_amount_held'],
+                #                   'balance_amount_total': datum['balance_amount_total'],
+                #                   'usd_balance': datum['usd_balance'],
+                #                   'btc_balance': datum['btc_balance'],
+                #                   'last_price': datum['last_price'],
+                #                   'time': datum['time']})
 
                 # origin_json_data.append({'id': idx,
                 #                          'balance_curr_code': datum['balance_curr_code'],
@@ -236,15 +245,15 @@ class RetrieveDataViewFiveMin(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
-                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+                datum['usd_balance'] = str(int(float(datum['btc_balance']) * float(ticker['bid'])))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
-                                  'balance_amount_avail': datum['balance_amount_avail'],
+                                  'balance_amount_avail': str(int(float(datum['balance_amount_avail']))),
                                   # 'balance_amount_held': datum['balance_amount_held'],
-                                  'balance_amount_total': datum['balance_amount_total'],
+                                  'balance_amount_total': str(int(float(datum['balance_amount_total']))),
                                   'usd_balance': datum['usd_balance'],
-                                  'btc_balance': datum['btc_balance'],
-                                  'last_price': datum['last_price'],
+                                  'btc_balance': str(int(float(datum['btc_balance']))),
+                                  'last_price': str(int(float(datum['last_price']))),
                                   'time': datum['time']})
         return Response(json_data, status=status.HTTP_200_OK)
 
@@ -299,15 +308,15 @@ class RetrieveDataViewOneHour(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
-                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+                datum['usd_balance'] = str(int(float(datum['btc_balance']) * float(ticker['bid'])))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
-                                  'balance_amount_avail': datum['balance_amount_avail'],
+                                  'balance_amount_avail': str(int(float(datum['balance_amount_avail']))),
                                   # 'balance_amount_held': datum['balance_amount_held'],
-                                  'balance_amount_total': datum['balance_amount_total'],
+                                  'balance_amount_total': str(int(float(datum['balance_amount_total']))),
                                   'usd_balance': datum['usd_balance'],
-                                  'btc_balance': datum['btc_balance'],
-                                  'last_price': datum['last_price'],
+                                  'btc_balance': str(int(float(datum['btc_balance']))),
+                                  'last_price': str(int(float(datum['last_price']))),
                                   'time': datum['time']})
         return Response(json_data, status=status.HTTP_200_OK)
 
@@ -361,15 +370,15 @@ class RetrieveDataViewFourHours(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
-                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+                datum['usd_balance'] = str(int(float(datum['btc_balance']) * float(ticker['bid'])))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
-                                  'balance_amount_avail': datum['balance_amount_avail'],
+                                  'balance_amount_avail': str(int(float(datum['balance_amount_avail']))),
                                   # 'balance_amount_held': datum['balance_amount_held'],
-                                  'balance_amount_total': datum['balance_amount_total'],
+                                  'balance_amount_total': str(int(float(datum['balance_amount_total']))),
                                   'usd_balance': datum['usd_balance'],
-                                  'btc_balance': datum['btc_balance'],
-                                  'last_price': datum['last_price'],
+                                  'btc_balance': str(int(float(datum['btc_balance']))),
+                                  'last_price': str(int(float(datum['last_price']))),
                                   'time': datum['time']})
         return Response(json_data, status=status.HTTP_200_OK)
 
@@ -423,15 +432,15 @@ class RetrieveDataViewOneDay(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
-                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+                datum['usd_balance'] = str(int(float(datum['btc_balance']) * float(ticker['bid'])))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
-                                  'balance_amount_avail': datum['balance_amount_avail'],
+                                  'balance_amount_avail': str(int(float(datum['balance_amount_avail']))),
                                   # 'balance_amount_held': datum['balance_amount_held'],
-                                  'balance_amount_total': datum['balance_amount_total'],
+                                  'balance_amount_total': str(int(float(datum['balance_amount_total']))),
                                   'usd_balance': datum['usd_balance'],
-                                  'btc_balance': datum['btc_balance'],
-                                  'last_price': datum['last_price'],
+                                  'btc_balance': str(int(float(datum['btc_balance']))),
+                                  'last_price': str(int(float(datum['last_price']))),
                                   'time': datum['time']})
         return Response(json_data, status=status.HTTP_200_OK)
 
@@ -485,15 +494,15 @@ class RetrieveDataViewOneWeek(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
-                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+                datum['usd_balance'] = str(int(float(datum['btc_balance']) * float(ticker['bid'])))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
-                                  'balance_amount_avail': datum['balance_amount_avail'],
+                                  'balance_amount_avail': str(int(float(datum['balance_amount_avail']))),
                                   # 'balance_amount_held': datum['balance_amount_held'],
-                                  'balance_amount_total': datum['balance_amount_total'],
+                                  'balance_amount_total': str(int(float(datum['balance_amount_total']))),
                                   'usd_balance': datum['usd_balance'],
-                                  'btc_balance': datum['btc_balance'],
-                                  'last_price': datum['last_price'],
+                                  'btc_balance': str(int(float(datum['btc_balance']))),
+                                  'last_price': str(int(float(datum['last_price']))),
                                   'time': datum['time']})
         return Response(json_data, status=status.HTTP_200_OK)
 
@@ -547,15 +556,15 @@ class RetrieveDataViewOneMonth(APIView):
 
         for idx, datums in enumerate(data):
             for datum in datums:
-                datum['usd_balance'] = str(float(datum['btc_balance']) * float(ticker['bid']))
+                datum['usd_balance'] = str(int(float(datum['btc_balance']) * float(ticker['bid'])))
                 json_data.append({'id': idx,
                                   'balance_curr_code': datum['balance_curr_code'],
-                                  'balance_amount_avail': datum['balance_amount_avail'],
+                                  'balance_amount_avail': str(int(float(datum['balance_amount_avail']))),
                                   # 'balance_amount_held': datum['balance_amount_held'],
-                                  'balance_amount_total': datum['balance_amount_total'],
+                                  'balance_amount_total': str(int(float(datum['balance_amount_total']))),
                                   'usd_balance': datum['usd_balance'],
-                                  'btc_balance': datum['btc_balance'],
-                                  'last_price': datum['last_price'],
+                                  'btc_balance': str(int(float(datum['btc_balance']))),
+                                  'last_price': str(int(float(datum['last_price']))),
                                   'time': datum['time']})
         return Response(json_data, status=status.HTTP_200_OK)
 
