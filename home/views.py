@@ -80,7 +80,8 @@ class AccountNameOptionView(APIView):
 
 class AccountNameDisplayView(APIView):
     def get(self, request, format=None):
-        account_names = []
+        account_names_admin = []
+        account_names_trader = []
 
         current_user = request.user
         current_username = current_user.username
@@ -91,11 +92,11 @@ class AccountNameDisplayView(APIView):
             db = connection['cc_accounts']
             cols = db.collection_names()
             for col in cols:
-                account_names.append(col.split('_')[0])
+                account_names_admin.append(col.split('_')[0])
+            return Response(account_names_admin, status=status.HTTP_200_OK)
         else:
-            # account_names = current_username
-            account_names.append(current_username)
-        return Response(account_names, status=status.HTTP_200_OK)
+            account_names_trader.append(current_username)
+            return Response(account_names_trader, status=status.HTTP_200_OK)
 
 
 class RetrieveDataViewFifteenMin(APIView):
