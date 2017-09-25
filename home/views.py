@@ -208,8 +208,6 @@ class RetrieveDataViewFiveMin(APIView):
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
 
-        # current_user = request.user
-        # current_username = current_user.username
         current_username = request.path.split('/')[-1]
 
         if current_username == 'LANDON':
@@ -218,14 +216,6 @@ class RetrieveDataViewFiveMin(APIView):
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -233,7 +223,6 @@ class RetrieveDataViewFiveMin(APIView):
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=15)
             start_time = curr_date_time - datetime.timedelta(minutes=20)
-            # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
@@ -269,10 +258,6 @@ class RetrieveDataViewOneHour(APIView):
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
-
-        # current_user = request.user
-        # current_username = current_user.username
-
         current_username = request.path.split('/')[-1]
 
         if current_username == 'LANDON':
@@ -281,14 +266,6 @@ class RetrieveDataViewOneHour(APIView):
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -296,7 +273,6 @@ class RetrieveDataViewOneHour(APIView):
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=15)
             start_time = curr_date_time - datetime.timedelta(minutes=20)
-            # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
@@ -333,8 +309,6 @@ class RetrieveDataViewFourHours(APIView):
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
 
-        # current_user = request.user
-        # current_username = current_user.username
         current_username = request.path.split('/')[-1]
 
         if current_username == 'LANDON':
@@ -343,14 +317,6 @@ class RetrieveDataViewFourHours(APIView):
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -395,8 +361,6 @@ class RetrieveDataViewOneDay(APIView):
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
 
-        # current_user = request.user
-        # current_username = current_user.username
         current_username = request.path.split('/')[-1]
 
         if current_username == 'LANDON':
@@ -405,14 +369,6 @@ class RetrieveDataViewOneDay(APIView):
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -420,7 +376,6 @@ class RetrieveDataViewOneDay(APIView):
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=15)
             start_time = curr_date_time - datetime.timedelta(minutes=20)
-            # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
@@ -456,9 +411,6 @@ class RetrieveDataViewOneWeek(APIView):
         mongoserver_uri = "mongodb://Readuser:jbh4S3pCpTGCdIGGVOU6@10.8.0.2:27017/admin"
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
-
-        # current_user = request.user
-        # current_username = current_user.username
         current_username = request.path.split('/')[-1]
 
         if current_username == 'LANDON':
@@ -467,14 +419,6 @@ class RetrieveDataViewOneWeek(APIView):
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -482,7 +426,6 @@ class RetrieveDataViewOneWeek(APIView):
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=15)
             start_time = curr_date_time - datetime.timedelta(minutes=20)
-            # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
@@ -519,8 +462,6 @@ class RetrieveDataViewOneMonth(APIView):
         connection = MongoClient(host=mongoserver_uri)
         db = connection['cc_accounts']
 
-        # current_user = request.user
-        # current_username = current_user.username
         current_username = request.path.split('/')[-1]
 
         if current_username == 'LANDON':
@@ -529,14 +470,6 @@ class RetrieveDataViewOneMonth(APIView):
             collection = db['CHRISTIAN_coinigy_account']
         if current_username == 'VIVEK':
             collection = db['VIVEK_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == '':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'LANDON':
-        #     collection = db['LANDON_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'CHRISTIAN':
-        #     collection = db['CHRISTIAN_coinigy_account']
-        # if current_username == 'admin' and AccountNameOption.objects.get().account_name == 'VIVEK':
-        #     collection = db['VIVEK_coinigy_account']
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
@@ -544,7 +477,6 @@ class RetrieveDataViewOneMonth(APIView):
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=15)
             start_time = curr_date_time - datetime.timedelta(minutes=20)
-            # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
