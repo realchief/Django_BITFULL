@@ -52,10 +52,12 @@ fabric.properties
 __pycache__/
 *.py[cod]
 *.pyc
+
 *.pot
 
 # static
 static/*
 home/static/*
 
+#db
 db.sqlite3

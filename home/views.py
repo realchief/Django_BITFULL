@@ -136,8 +136,8 @@ class RetrieveDataViewFifteenMin(APIView):
         for index in range(0, 30):
             diff_time = 15 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=65)
-            start_time = curr_date_time - datetime.timedelta(minutes=70)
+            end_time = curr_date_time - datetime.timedelta(minutes=15)
+            start_time = curr_date_time - datetime.timedelta(minutes=20)
 
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -231,8 +231,8 @@ class RetrieveDataViewFiveMin(APIView):
         for index in range(0, 30):
             diff_time = 5 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=65)
-            start_time = curr_date_time - datetime.timedelta(minutes=70)
+            end_time = curr_date_time - datetime.timedelta(minutes=15)
+            start_time = curr_date_time - datetime.timedelta(minutes=20)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -294,8 +294,8 @@ class RetrieveDataViewOneHour(APIView):
         for index in range(0, 30):
             diff_time = 60 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=65)
-            start_time = curr_date_time - datetime.timedelta(minutes=70)
+            end_time = curr_date_time - datetime.timedelta(minutes=15)
+            start_time = curr_date_time - datetime.timedelta(minutes=20)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -356,8 +356,8 @@ class RetrieveDataViewFourHours(APIView):
         for index in range(0, 30):
             diff_time = 240 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=65)
-            start_time = curr_date_time - datetime.timedelta(minutes=70)
+            end_time = curr_date_time - datetime.timedelta(minutes=15)
+            start_time = curr_date_time - datetime.timedelta(minutes=20)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -418,8 +418,8 @@ class RetrieveDataViewOneDay(APIView):
         for index in range(0, 30):
             diff_time = index
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=65)
-            start_time = curr_date_time - datetime.timedelta(minutes=70)
+            end_time = curr_date_time - datetime.timedelta(minutes=15)
+            start_time = curr_date_time - datetime.timedelta(minutes=20)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -480,8 +480,8 @@ class RetrieveDataViewOneWeek(APIView):
         for index in range(0, 30):
             diff_time = 7 * index
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=65)
-            start_time = curr_date_time - datetime.timedelta(minutes=70)
+            end_time = curr_date_time - datetime.timedelta(minutes=15)
+            start_time = curr_date_time - datetime.timedelta(minutes=20)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -542,8 +542,8 @@ class RetrieveDataViewOneMonth(APIView):
         for index in range(0, 30):
             diff_time = 30 * index
             curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=65)
-            start_time = curr_date_time - datetime.timedelta(minutes=70)
+            end_time = curr_date_time - datetime.timedelta(minutes=15)
+            start_time = curr_date_time - datetime.timedelta(minutes=20)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
