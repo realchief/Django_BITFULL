@@ -373,8 +373,10 @@ class RetrieveDataViewOneDay(APIView):
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
-            diff_time = index
-            curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
+            # diff_time = index
+            # curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
+            diff_time = 1440 * index
+            curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=15)
             start_time = curr_date_time - datetime.timedelta(minutes=20)
             cursor_data_eachtime = collection.find({
@@ -423,8 +425,8 @@ class RetrieveDataViewOneWeek(APIView):
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
-            diff_time = 7 * index
-            curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
+            diff_time = 10080 * index
+            curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=15)
             start_time = curr_date_time - datetime.timedelta(minutes=20)
             cursor_data_eachtime = collection.find({
@@ -474,8 +476,8 @@ class RetrieveDataViewOneMonth(APIView):
 
         latest_datatime = list(collection.find({}).sort('time', pymongo.DESCENDING).limit(1))[0]['time']
         for index in range(0, 30):
-            diff_time = 30 * index
-            curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
+            diff_time = 44640 * index
+            curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
             end_time = curr_date_time - datetime.timedelta(minutes=15)
             start_time = curr_date_time - datetime.timedelta(minutes=20)
             cursor_data_eachtime = collection.find({
