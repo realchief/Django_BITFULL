@@ -191,8 +191,8 @@ class RetrieveDataViewFiveMin(APIView):
         for index in range(0, 30):
             diff_time = 5 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=15)
-            start_time = curr_date_time - datetime.timedelta(minutes=20)
+            end_time = curr_date_time - datetime.timedelta(minutes=55)
+            start_time = curr_date_time - datetime.timedelta(minutes=60)
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
@@ -241,8 +241,8 @@ class RetrieveDataViewOneHour(APIView):
         for index in range(0, 30):
             diff_time = 60 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=15)
-            start_time = curr_date_time - datetime.timedelta(minutes=20)
+            end_time = curr_date_time - datetime.timedelta(minutes=55)
+            start_time = curr_date_time - datetime.timedelta(minutes=60)
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
@@ -292,8 +292,8 @@ class RetrieveDataViewFourHours(APIView):
         for index in range(0, 30):
             diff_time = 240 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=15)
-            start_time = curr_date_time - datetime.timedelta(minutes=20)
+            end_time = curr_date_time - datetime.timedelta(minutes=55)
+            start_time = curr_date_time - datetime.timedelta(minutes=60)
             # {'created': {'$lt': datetime.datetime.now(), '$gt': datetime.datetime.now() - timedelta(days=10)}}
             cursor_data_eachtime = collection.find({
                 'time': {
@@ -346,8 +346,8 @@ class RetrieveDataViewOneDay(APIView):
             # curr_date_time = latest_datatime - datetime.timedelta(days=diff_time)
             diff_time = 1440 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=15)
-            start_time = curr_date_time - datetime.timedelta(minutes=20)
+            end_time = curr_date_time - datetime.timedelta(minutes=55)
+            start_time = curr_date_time - datetime.timedelta(minutes=60)
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
@@ -396,8 +396,8 @@ class RetrieveDataViewOneWeek(APIView):
         for index in range(0, 30):
             diff_time = 10080 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=15)
-            start_time = curr_date_time - datetime.timedelta(minutes=20)
+            end_time = curr_date_time - datetime.timedelta(minutes=55)
+            start_time = curr_date_time - datetime.timedelta(minutes=60)
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
@@ -447,8 +447,8 @@ class RetrieveDataViewOneMonth(APIView):
         for index in range(0, 30):
             diff_time = 44640 * index
             curr_date_time = latest_datatime - datetime.timedelta(minutes=diff_time)
-            end_time = curr_date_time - datetime.timedelta(minutes=15)
-            start_time = curr_date_time - datetime.timedelta(minutes=20)
+            end_time = curr_date_time - datetime.timedelta(minutes=55)
+            start_time = curr_date_time - datetime.timedelta(minutes=60)
             cursor_data_eachtime = collection.find({
                 'time': {
                     '$gte': start_time,
